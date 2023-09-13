@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:your_wellbeing/login.dart';
 import 'package:your_wellbeing/main.dart';
 
 class signUp extends StatelessWidget{
@@ -52,7 +53,7 @@ class signUp extends StatelessWidget{
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => MyHomePage(title: "Home Page"),
+                      builder: (context) => login(),
                     ),
                   );
                 }, child: Text("Already User ?"))
