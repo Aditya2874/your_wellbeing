@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:your_wellbeing/familyInfo.dart';
 import 'package:your_wellbeing/healthInfo.dart';
-import 'package:your_wellbeing/signUp.dart';
+import 'package:your_wellbeing/introductionPage.dart';
 import 'package:your_wellbeing/userProfile.dart';
 
 void main() {
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const signUp(),
+      home: IntroductionScreen(),
     );
   }
 }

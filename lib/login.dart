@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:your_wellbeing/main.dart';
 
 class login extends StatelessWidget{
@@ -12,7 +13,7 @@ class login extends StatelessWidget{
     return Scaffold(
       appBar: AppBar(
       backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      title: Text("Login Page")
+      title: const Text("Login Page")
       ),
       body: Container(
         alignment: Alignment.bottomCenter,
@@ -33,13 +34,14 @@ class login extends StatelessWidget{
             obscureText: true,
           ),
           ElevatedButton(
-            onPressed: () {
-              // Navigate to the home screen
-              Navigator.push(
+            onPressed: () async {
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              prefs.setBool('loggedIn', true);
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
                   builder: (context) => MyHomePage(title: "Home Page"),
-                ),
+                )
               );
             },
             child: Text('Login'),

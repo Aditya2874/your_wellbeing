@@ -37,7 +37,7 @@ class signUp extends StatelessWidget{
             ElevatedButton(
               onPressed: () {
                 // Navigate to the home screen
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                     builder: (context) => MyHomePage(title: "Home Page"),
