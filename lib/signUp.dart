@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:your_wellbeing/login.dart';
 import 'package:your_wellbeing/main.dart';
 
@@ -35,7 +36,9 @@ class signUp extends StatelessWidget{
               obscureText: true,
             ),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                prefs.setBool('loggedIn', true);
                 // Navigate to the home screen
                 Navigator.pushReplacement(
                   context,

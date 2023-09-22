@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:your_wellbeing/login.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:your_wellbeing/main.dart';
+import 'package:your_wellbeing/signUp.dart';
 
 class IntroductionScreen extends StatefulWidget {
   @override
@@ -18,10 +18,10 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
     super.initState();
   }
 
-  _navigateToLogin() {
+  _navigateToSignUp() {
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
-        builder: (context) => login(),
+        builder: (context) => signUp(),
       ),
     );
     FlutterNativeSplash.remove();
@@ -36,21 +36,14 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
   }
   _checkLoginStatus() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    SharedPreferences prefs2 = await SharedPreferences.getInstance();
     bool loggedIn = prefs.getBool('loggedIn') ?? false;
-    bool isFirstTime = prefs2.getBool('isFirstTime') ?? true;
     if (loggedIn) {
       _navigateToHome();
-    } else if(!isFirstTime){
-      _navigateToLogin();
-    }
-    else{
-      prefs2.setBool('isFirstTime', false);
-      FlutterNativeSplash.remove();
     }
   }
   @override
   Widget build(BuildContext context) {
+    FlutterNativeSplash.remove();
     return Scaffold(
       appBar: AppBar(
         title: Text('Introduction Screen'),
@@ -62,7 +55,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
             Text('Welcome to the App!'),
             ElevatedButton(
               onPressed: (){
-                _navigateToLogin();
+                _navigateToSignUp();
               },
               child: Text('Get Started'),
             ),

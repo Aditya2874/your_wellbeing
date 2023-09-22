@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Your WellBeing',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         useMaterial3: true,
       ),
       home: IntroductionScreen(),
@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> _pages = [
     familyInfo(),
     healthInfo(),
-    userProfile()
+    UserProfile()
   ];
 
   void _onItemTapped(int index) {
@@ -52,10 +52,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
       body: Center(
         child: _pages.elementAt(_selectedIndex),
       ),
