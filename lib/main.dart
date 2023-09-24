@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:your_wellbeing/MedicineInfo.dart';
 import 'package:your_wellbeing/familyInfo.dart';
 import 'package:your_wellbeing/healthInfo.dart';
 import 'package:your_wellbeing/introductionPage.dart';
@@ -39,7 +40,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final List<Widget> _pages = [
     familyInfo(),
-    healthInfo(),
+    MedicineListScreen(),
+    HealthInfo(),
     UserProfile()
   ];
 
@@ -55,24 +57,36 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: _pages.elementAt(_selectedIndex),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Page One',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Page Two',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'Page Three',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-      ),// This trailing comma makes auto-formatting nicer for build methods.
+      bottomNavigationBar:Padding(
+        padding: const EdgeInsets.only(bottom: 15,left: 10,right: 10),
+          child: BottomNavigationBar(
+              backgroundColor: Colors.indigo, // Set the background color
+              selectedItemColor: Colors.blue, // Set the color of the selected item
+              unselectedItemColor: Colors.black, // Set the color of unselected items
+              items: const [
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.search),
+                  label: 'Search',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.search),
+                  label: 'Search',
+                ),
+                // Add more items as needed
+              ],
+              currentIndex: _selectedIndex,
+              onTap: _onItemTapped,
+              // Add your onTap and currentIndex properties as needed
+            ),
+      )// This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

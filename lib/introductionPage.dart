@@ -12,10 +12,10 @@ class IntroductionScreen extends StatefulWidget {
 class _IntroductionScreenState extends State<IntroductionScreen> {
   @override
   void initState() {
+    super.initState();
     WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
     FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
     _checkLoginStatus();
-    super.initState();
   }
 
   _navigateToSignUp() {
@@ -36,6 +36,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
   }
   _checkLoginStatus() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+
     bool loggedIn = prefs.getBool('loggedIn') ?? false;
     if (loggedIn) {
       _navigateToHome();

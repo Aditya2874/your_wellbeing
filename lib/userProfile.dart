@@ -104,7 +104,7 @@ class UserHeader extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 50,
-            backgroundImage: AssetImage("coding.png"), // Replace with your image path
+            backgroundImage: AssetImage("assets/coding.png"), // Replace with your image path
           ),
           SizedBox(height: 8.0),
           Text(
