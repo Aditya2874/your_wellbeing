@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:your_wellbeing/main.dart';
+import 'package:your_wellbeing/mongodb.dart';
 import 'package:your_wellbeing/signUp.dart';
 
 class IntroductionScreen extends StatefulWidget {
@@ -13,9 +14,9 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
   @override
   void initState() {
     super.initState();
+    _checkLoginStatus();
     WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
     FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-    _checkLoginStatus();
   }
 
   _navigateToSignUp() {
@@ -36,7 +37,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
   }
   _checkLoginStatus() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-
+    MongoDatabase.connect();
     bool loggedIn = prefs.getBool('loggedIn') ?? false;
     if (loggedIn) {
       _navigateToHome();

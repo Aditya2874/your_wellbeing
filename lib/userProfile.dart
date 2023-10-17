@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:your_wellbeing/mongodb.dart';
 import 'package:your_wellbeing/signUp.dart';
-
+import 'package:your_wellbeing/constants.dart';
 class UserProfile extends StatelessWidget {
   const UserProfile({super.key});
 
@@ -20,7 +21,7 @@ class UserProfile extends StatelessWidget {
             leading: Icon(Icons.share),
             title: Text('Invite a Friend'),
             onTap: () {
-              Share.share("Hello! Welcome to Your WellBeing");
+              Share.share(SHARE_MSG);
             },
           ),
           ListTile(
@@ -104,7 +105,7 @@ class UserHeader extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 50,
-            backgroundImage: AssetImage("assets/coding.png"), // Replace with your image path
+            backgroundImage: AssetImage("assets/ywb.png"), // Replace with your image path
           ),
           SizedBox(height: 8.0),
           Text(

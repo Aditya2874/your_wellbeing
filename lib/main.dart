@@ -3,6 +3,7 @@ import 'package:your_wellbeing/MedicineInfo.dart';
 import 'package:your_wellbeing/familyInfo.dart';
 import 'package:your_wellbeing/healthInfo.dart';
 import 'package:your_wellbeing/introductionPage.dart';
+import 'package:your_wellbeing/mongodb.dart';
 import 'package:your_wellbeing/userProfile.dart';
 
 void main() {
@@ -11,8 +12,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -57,9 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: _pages.elementAt(_selectedIndex),
       ),
-      bottomNavigationBar:Padding(
-        padding: const EdgeInsets.only(bottom: 15,left: 10,right: 10),
-          child: BottomNavigationBar(
+      bottomNavigationBar:
+          BottomNavigationBar(
               backgroundColor: Colors.indigo, // Set the background color
               selectedItemColor: Colors.blue, // Set the color of the selected item
               unselectedItemColor: Colors.black, // Set the color of unselected items
@@ -86,7 +84,6 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: _onItemTapped,
               // Add your onTap and currentIndex properties as needed
             ),
-      )// This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

@@ -22,6 +22,7 @@ dependencies:
   shared_preferences: ^2.0.13
   flutter_native_splash: ^2.3.2
   share: ^2.0.0
+  mongo_dart: ^0.9.3
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -29,8 +30,11 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter_native_splash:
-  color: "#FFCC00"
-  image: "assets/coding.png"
+  color: "#444444"
+  image: "assets/Ygif.gif"
+  branding: "assets/ywb.png"
+  branding_mode: bottom
+  fullscreen: true
   android: true
   ios: true
 flutter:
