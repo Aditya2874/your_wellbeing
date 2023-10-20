@@ -21,10 +21,24 @@ class familyInfo extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text('Family Members List'),
-
+            actions: <Widget>[
+              IconButton(
+              icon: const Icon(Icons.add_alert),
+              tooltip: 'Show Snackbar',
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('This is a snackbar')));
+              })
+            ]
         ),
         body: FamilyMemberList(
           familyMembers: familyMembers,
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            // Handle the action when the floating action button is pressed
+          },
+          child: Icon(Icons.add),
         ),
       ),
     );

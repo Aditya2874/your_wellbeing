@@ -36,7 +36,7 @@ class login extends StatelessWidget{
           ElevatedButton(
             onPressed: () async {
               SharedPreferences prefs = await SharedPreferences.getInstance();
-              prefs.setBool('loggedIn', true);
+              prefs.setBool('isLoggedIn', true);
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(

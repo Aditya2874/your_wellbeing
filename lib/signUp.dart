@@ -38,7 +38,7 @@ class signUp extends StatelessWidget{
             ElevatedButton(
               onPressed: () async {
                 SharedPreferences prefs = await SharedPreferences.getInstance();
-                prefs.setBool('loggedIn', true);
+                prefs.setBool('isLoggedIn', true);
                 // Navigate to the home screen
                 Navigator.pushReplacement(
                   context,

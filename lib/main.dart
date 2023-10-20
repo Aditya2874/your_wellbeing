@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:your_wellbeing/MedicineInfo.dart';
 import 'package:your_wellbeing/familyInfo.dart';
 import 'package:your_wellbeing/healthInfo.dart';
@@ -6,12 +10,18 @@ import 'package:your_wellbeing/introductionPage.dart';
 import 'package:your_wellbeing/mongodb.dart';
 import 'package:your_wellbeing/userProfile.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding); // Ensure Flutter is initialized
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+  runApp(MyApp(isLoggedIn: isLoggedIn));
+  FlutterNativeSplash.remove();
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool isLoggedIn;
+  MyApp({required this.isLoggedIn});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,7 +30,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         useMaterial3: true,
       ),
-      home: IntroductionScreen(),
+      home: isLoggedIn ? MyHomePage(title: "Your WellBeing") : IntroductionScreen(),
     );
   }
 }

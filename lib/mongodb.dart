@@ -8,9 +8,16 @@ class MongoDatabase{
     await db.open();
     print(db);
     print("Connected");
-    coll = db.collection("colname");
+    coll = db.collection("users");
   }
-  static Future<void> insertF(FamilyDataModel dataModel) async {
-    await coll.insertOne(dataModel.toJson());
+  static Future<void> addUser(FamilyDataModel user) async {
+    coll.insertOne(user);
   }
+  static Future<void> addFamily(String phone,String member) async {
+    final query = where.eq('phone', '123456'); // Replace 'phone' with your actual field name
+    final update = ModifierBuilder()
+        .push('family', member);
+    await coll.update(query, update);
+  }
+
 }

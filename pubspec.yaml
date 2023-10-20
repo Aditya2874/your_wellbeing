@@ -21,6 +21,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   shared_preferences: ^2.0.13
   flutter_native_splash: ^2.3.2
+  flutter_launcher_icons: ^0.13.1
   share: ^2.0.0
   mongo_dart: ^0.9.3
 dev_dependencies:
@@ -37,6 +38,11 @@ flutter_native_splash:
   fullscreen: true
   android: true
   ios: true
+flutter_launcher_icons:
+  image_path: "assets/ybw96.png"
+  android: true
+  ios: true
+  remove_alpha_ios: true
 flutter:
 
   uses-material-design: true
